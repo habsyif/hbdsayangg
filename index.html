@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sayanggkuuu 🤍🫶🏻</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Container Animasi Hati & Kelopak Sakura -->
+    <div id="hearts-container"></div>
+
+    <!-- Tombol Musik Mengambang -->
+    <button id="music-btn" class="music-toggle" onclick="toggleBgMusic()">
+        <span class="disc">💿</span>
+        <span id="music-label">Putar Musik 🎵</span>
+    </button>
+
+    <!-- Audio Player -->
+    <audio id="bg-music" loop>
+        <source src="Party.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- HALAMAN 1: LAYAR AWAL -->
+    <div id="page-1" class="container fade-in">
+        <div class="welcome-card">
+            <div class="ribbon-badge"></div>
+
+            <!-- Ilustrasi Kado Pink Muda Custom SVG -->
+            <div class="gift-illustration">
+                <svg width="74" height="74" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sparkles -->
+                    <path d="M18 22L20 27L25 29L20 31L18 36L16 31L11 29L16 27L18 22Z" fill="#FF9EBB"/>
+                    <path d="M84 18L85.5 22L89.5 23.5L85.5 25L84 29L82.5 25L78.5 23.5L82.5 22L84 18Z" fill="#F47FA3"/>
+                    <!-- Kotak Kado Bawah -->
+                    <rect x="20" y="46" width="60" height="42" rx="8" fill="#FFD1E0" stroke="#F47FA3" stroke-width="2.5"/>
+                    <!-- Tutup Kado -->
+                    <rect x="15" y="34" width="70" height="14" rx="5" fill="#FFADC6" stroke="#F47FA3" stroke-width="2.5"/>
+                    <!-- Pita Vertikal & Horizontal -->
+                    <rect x="45" y="34" width="10" height="54" fill="#F47FA3"/>
+                    <rect x="20" y="62" width="60" height="8" fill="#F47FA3"/>
+                    <!-- Pita Kupu-kupu Atas -->
+                    <path d="M50 34C42 20 26 20 30 31C33 36 45 34 50 34Z" fill="#FF85A9" stroke="#D95B82" stroke-width="2"/>
+                    <path d="M50 34C58 20 74 20 70 31C67 36 55 34 50 34Z" fill="#FF85A9" stroke="#D95B82" stroke-width="2"/>
+                    <circle cx="50" cy="33" r="4.5" fill="#D95B82"/>
+                </svg>
+            </div>
+
+            <h1 class="hero-title">Hi Sayanggkuuu 🤍</h1>
+            <p class="hero-subtitle">
+                There is something special for you today my love 🤍🤍<br>
+                <span style="font-size: 0.92rem; color: var(--text-muted); font-weight: 500;">
+                    Sebuah kejutan kecil di hari ulang tahunmu yang paling manis 🌸
+                </span>
+            </p>
+
+            <button class="btn" onclick="startJourney()">
+                <span>Open Surprise</span>
+                <span>🎁</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Passcode -->
+    <div id="modal-passcode" class="modal-overlay hidden">
+        <div class="modal-box" id="passcode-box">
+            <button class="modal-close-x" onclick="closeModal('modal-passcode')" aria-label="Tutup">✕</button>
+            <div class="ribbon-badge" style="margin-bottom: 10px;">🔐 Private Access</div>
+            <h2 style="font-size: 1.9rem; margin-bottom: 6px;">Kode Rahasia 🩷</h2>
+            <p style="font-size: 0.95rem; color: var(--text-body); font-weight: 600;">
+                Masukkan 8 digit passcodenya yaa sayangg 🫶🏻
+            </p>
+
+            <!-- Indikator 8 Hati -->
+            <div class="pin-dots" id="pin-dots">
+                <div class="pin-dot">🤍</div>
+                <div class="pin-dot">🤍</div>
+                <div class="pin-dot">🤍</div>
+                <div class="pin-dot">🤍</div>
+                <div class="pin-dot">🤍</div>
+                <div class="pin-dot">🤍</div>
+                <div class="pin-dot">🤍</div>
+                <div class="pin-dot">🤍</div>
+            </div>
+
+            <!-- Input Passcode -->
+            <input
+                type="password"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                maxlength="8"
+                id="passcode-input"
+                placeholder="Ketik 8 angka di sini..."
+                oninput="autoCheckPasscode()"
+            >
+
+            <!-- Numpad Interaktif -->
+            <div class="numpad">
+                <button type="button" class="num-btn" onclick="pressDigit('1')">1</button>
+                <button type="button" class="num-btn" onclick="pressDigit('2')">2</button>
+                <button type="button" class="num-btn" onclick="pressDigit('3')">3</button>
+                <button type="button" class="num-btn" onclick="pressDigit('4')">4</button>
+                <button type="button" class="num-btn" onclick="pressDigit('5')">5</button>
+                <button type="button" class="num-btn" onclick="pressDigit('6')">6</button>
+                <button type="button" class="num-btn" onclick="pressDigit('7')">7</button>
+                <button type="button" class="num-btn" onclick="pressDigit('8')">8</button>
+                <button type="button" class="num-btn" onclick="pressDigit('9')">9</button>
+                <button type="button" class="num-btn action-btn" onclick="clearDigits()">Reset</button>
+                <button type="button" class="num-btn" onclick="pressDigit('0')">0</button>
+                <button type="button" class="num-btn action-btn" onclick="backspaceDigit()">⌫</button>
+            </div>
+
+            <div id="error-msg" class="error-msg">
+                Kodenya salah sayang, coba ingat-ingat lagi sayangg 😞😞
+            </div>
+
+            <button type="button" class="hint-toggle" onclick="toggleHint()">
+                Lupa kodenya? Klik buat petunjuk 🤫
+            </button>
+            <div id="hint-box" class="hint-box hidden">
+                💡 Format 8 angka (DDMMYYYY): Coba tanggal ulang tahunmu atau tanggal spesial kita berdua yaa sayangg 🩷
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

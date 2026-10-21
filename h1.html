@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Bouquet For You 💐 | Happy Birthday Sayanggkuuu 🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-blush-1: #fff6f9;
+            --bg-blush-2: #ffe8f0;
+            --bg-blush-3: #ffd6e5;
+            --pink-soft: #ffc2d4;
+            --pink-pastel: #ff9ebb;
+            --pink-primary: #f47fa3;
+            --pink-deep: #d95b82;
+            --text-heading: #b84166;
+            --text-body: #784355;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, #ffffff 0%, transparent 45%),
+                        radial-gradient(circle at 80% 75%, #ffcfe0 0%, transparent 50%),
+                        linear-gradient(145deg, var(--bg-blush-1) 0%, var(--bg-blush-2) 55%, var(--bg-blush-3) 100%);
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-body);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 16px 100px;
+            position: relative;
+        }
+
+        /* Floating Music Button */
+        .music-toggle {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 950;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid var(--pink-soft);
+            color: var(--text-heading);
+            padding: 9px 15px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            box-shadow: 0 6px 18px rgba(244, 127, 163, 0.2);
+            transition: all 0.3s ease;
+        }
+        .music-toggle:hover {
+            transform: translateY(-2px);
+            background: #fff;
+        }
+
+        /* Header Section */
+        .header-box {
+            text-align: center;
+            z-index: 10;
+            max-width: 540px;
+            margin-top: 4px;
+            animation: fadeDown 0.8s ease forwards;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge-top {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid var(--pink-soft);
+            color: var(--pink-deep);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 999px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            box-shadow: 0 4px 12px rgba(244, 127, 163, 0.12);
+        }
+
+        .title-text {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(1.95rem, 5.5vw, 2.6rem);
+            color: var(--text-heading);
+            text-shadow: 0 3px 10px rgba(244, 127, 163, 0.22);
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .subtitle {
+            font-size: 0.98rem;
+            color: var(--text-body);
+            font-weight: 600;
+            line-height: 1.45;
+        }
+
+        .interactive-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            background: rgba(255, 240, 245, 0.92);
+            border: 1px dashed var(--pink-pastel);
+            color: var(--pink-deep);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 999px;
+        }
+
+        /* Love Note Toast Card */
+        .flower-note-card {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 2px solid #ffffff;
+            box-shadow: 0 10px 28px rgba(235, 120, 160, 0.2);
+            padding: 11px 20px;
+            border-radius: 20px;
+            max-width: 430px;
+            width: 94%;
+            text-align: center;
+            z-index: 20;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .flower-note-card.pop {
+            transform: scale(1.04);
+        }
+
+        .flower-note-title {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--pink-deep);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 2px;
+        }
+
+        .flower-note-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.35rem;
+            color: var(--text-heading);
+            line-height: 1.3;
+        }
+
+        /* Container Utama Buket (Mirip Buket Asli di Foto) */
+        .bouquet-stage {
+            position: relative;
+            width: 380px;
+            height: 490px;
+            margin: 2px auto 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            animation: floatBouquet 4.5s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes floatBouquet {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-9px) rotate(0.8deg); }
+        }
+
+        .bouquet-stage::before {
+            content: '';
+            position: absolute;
+            width: 260px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(217, 91, 130, 0.24) 0%, rgba(217, 91, 130, 0) 70%);
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bouquet-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            position: relative;
+            z-index: 1;
+        }
+
+        .clickable-flower {
+            cursor: pointer;
+            transform-origin: 0px 0px;
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+
+        .clickable-flower:hover {
+            transform: scale(1.08);
+        }
+
+        .clickable-flower:active {
+            transform: scale(0.96);
+        }
+
+        /* Kelopak Jatuh */
+        .falling-petal {
+            position: fixed;
+            top: -50px;
+            animation: fall linear infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.85;
+            }
+            85% {
+                opacity: 0.85;
+            }
+            100% {
+                transform: translateY(110vh) translateX(35px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Tombol Kembali */
+        .btn-kembali {
+            position: fixed;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            color: var(--text-heading);
+            border: 2px solid var(--pink-soft);
+            padding: 12px 28px;
+            font-size: 0.98rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(217, 91, 130, 0.22);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-kembali:hover {
+            background: linear-gradient(135deg, #ff9ebb 0%, #f47fa3 100%);
+            color: white;
+            border-color: white;
+            transform: translateX(-50%) translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 28px rgba(244, 127, 163, 0.4);
+        }
+
+        @media (max-width: 480px) {
+            .bouquet-stage {
+                width: 335px;
+                height: 440px;
+            }
+            .flower-note-text {
+                font-size: 1.22rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Musik Latar -->
+    <button id="music-btn" class="music-toggle" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+        <span id="music-text">Musik</span>
+    </button>
+    <audio id="bg-music" loop>
+        <source src="Party.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="header-box">
+        <span class="badge-top">💐 Our Special Flower Bouquet 💐</span>
+        <h1 class="title-text">A Bouquet For You 🤍</h1>
+        <p class="subtitle">Bunga tercantik untuk orang yang paling cantik di dunia, anjay 🤍</p>
+        <div class="interactive-hint">✨ Sentuh setiap bunga di buket untuk baca pesan manisnya ✨</div>
+    </div>
+
+    <!-- Kartu Pesan Bunga Interaktif -->
+    <div class="flower-note-card" id="flower-note-card">
+        <div class="flower-note-title" id="flower-name">🌼 Buket Spesial Kita — Klik bunganya yaa!</div>
+        <div class="flower-note-text" id="flower-msg">"Persis kayak bunga ini, kamu selalu bikin hari-hariku penuh warna sayangg 🤍"</div>
+    </div>
+
+    <!-- REPLIKA BUKET BUNGA SESUAI FOTO ASLI:
+         - Atas Kanan/Tengah: Tangkai tinggi bunga Peacock/Aster Ungu kecil
+         - Kiri Atas: Krisan Pink-Lilac besar menghadap atas-samping
+         - Kanan Tengah: Bunga Gerbera Peach-Oranye besar dengan tengah hitam-kuning
+         - Kanan Bawah (di bawah Gerbera): Krisan Maroon gelap dengan pinggiran putih
+         - Kiri & Tengah Bawah: Rangkaian 5 Bunga Krisan Putih fluffy
+         - Pembungkus: Plastik Kaca Bening (Cellophane) mengkilap berbentuk kerucut -->
+    <div class="bouquet-stage">
+        <svg class="bouquet-svg" viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Plastik Cellophane Belakang & Depan -->
+                <linearGradient id="cello-back" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.38"/>
+                    <stop offset="50%" stop-color="#fff0f5" stop-opacity="0.22"/>
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.45"/>
+                </linearGradient>
+
+                <linearGradient id="cello-front" x1="0%" y1="0%" x2="100%" y2="80%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.52"/>
+                    <stop offset="30%" stop-color="#ffffff" stop-opacity="0.18"/>
+                    <stop offset="65%" stop-color="#ffeef4" stop-opacity="0.28"/>
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.58"/>
+                </linearGradient>
+
+                <linearGradient id="cello-shine" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                </linearGradient>
+
+                <!-- 1. Gradasi Krisan Pink-Lilac (Kiri Atas) -->
+                <linearGradient id="pink-mum-petal" x1="50%" y1="0%" x2="50%" y2="100%">
+                    <stop offset="0%" stop-color="#ffb8ef"/>
+                    <stop offset="55%" stop-color="#f062cd"/>
+                    <stop offset="100%" stop-color="#b82594"/>
+                </linearGradient>
+                <linearGradient id="pink-mum-inner" x1="50%" y1="0%" x2="50%" y2="100%">
+                    <stop offset="0%" stop-color="#ffd6f6"/>
+                    <stop offset="65%" stop-color="#ff85e0"/>
+                    <stop offset="100%" stop-color="#d43bad"/>
+                </linearGradient>
+
+                <!-- 2. Gradasi Gerbera Peach-Salmon-Orange (Kanan Tengah) -->
+                <radialGradient id="gerbera-peach" cx="50%" cy="50%" r="50%">
+                    <stop offset="20%" stop-color="#ff9970"/>
+                    <stop offset="68%" stop-color="#ffb38a"/>
+                    <stop offset="100%" stop-color="#ffd0a8"/>
+                </radialGradient>
+                <radialGradient id="gerbera-gold-tint" cx="50%" cy="50%" r="50%">
+                    <stop offset="20%" stop-color="#f59e42"/>
+                    <stop offset="75%" stop-color="#ffbe5c"/>
+                    <stop offset="100%" stop-color="#ffd685"/>
+                </radialGradient>
+
+                <!-- 3. Gradasi Krisan Putih Fluffy -->
+                <radialGradient id="white-mum-grad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#f2f4d9"/>
+                    <stop offset="35%" stop-color="#ffffff"/>
+                    <stop offset="80%" stop-color="#fbf9f7"/>
+                    <stop offset="100%" stop-color="#e8e2dc"/>
+                </radialGradient>
+
+                <!-- 4. Gradasi Krisan Maroon Pinggiran Putih -->
+                <linearGradient id="maroon-petal-grad" x1="50%" y1="0%" x2="50%" y2="100%">
+                    <stop offset="0%" stop-color="#9e1f4e"/>
+                    <stop offset="40%" stop-color="#6e1133"/>
+                    <stop offset="100%" stop-color="#3d061a"/>
+                </linearGradient>
+
+                <!-- Bentuk Kelopak Reusable -->
+                <!-- Kelopak Gerbera Runcing Halus -->
+                <path id="gerbera-petal" d="M 0,0 C -6,-18 -8,-46 -2,-56 C 0,-59 2,-59 4,-56 C 10,-46 8,-18 0,0 Z"/>
+                <!-- Kelopak Krisan Putih -->
+                <path id="white-petal" d="M 0,0 C -8,-14 -10,-36 0,-42 C 10,-36 8,-14 0,0 Z"/>
+                <path id="white-petal-curved" d="M 0,0 C -9,-12 -7,-34 2,-39 C 10,-33 7,-14 0,0 Z"/>
+                <!-- Kelopak Krisan Maroon Bicolor (Pinggiran Putih) -->
+                <path id="maroon-petal" d="M 0,0 C -8,-14 -9,-32 0,-36 C 9,-32 8,-14 0,0 Z"
+                      fill="url(#maroon-petal-grad)" stroke="#ffffff" stroke-width="1.8"/>
+
+                <!-- Bunga Aster / Peacock Ungu Kecil -->
+                <g id="aster-bloom">
+                    <g fill="#b57cff">
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(0)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(30)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(60)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(90)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(120)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(150)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(180)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(210)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(240)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(270)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(300)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(330)"/>
+                    </g>
+                    <g fill="#d8b4fe" transform="scale(0.75) rotate(15)">
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(0)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(45)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(90)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(135)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(180)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(225)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(270)"/>
+                        <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(315)"/>
+                    </g>
+                    <circle cx="0" cy="0" r="5.5" fill="#7e22ce"/>
+                    <circle cx="0" cy="0" r="3" fill="#e9d5ff"/>
+                </g>
+
+                <!-- Template Krisan Putih Fluffy -->
+                <g id="fluffy-white-mum">
+                    <!-- Layer Luar -->
+                    <g fill="url(#white-mum-grad)" stroke="#e6e1da" stroke-width="0.6">
+                        <use href="#white-petal" transform="rotate(0)"/><use href="#white-petal" transform="rotate(20)"/>
+                        <use href="#white-petal" transform="rotate(40)"/><use href="#white-petal" transform="rotate(60)"/>
+                        <use href="#white-petal" transform="rotate(80)"/><use href="#white-petal" transform="rotate(100)"/>
+                        <use href="#white-petal" transform="rotate(120)"/><use href="#white-petal" transform="rotate(140)"/>
+                        <use href="#white-petal" transform="rotate(160)"/><use href="#white-petal" transform="rotate(180)"/>
+                        <use href="#white-petal" transform="rotate(200)"/><use href="#white-petal" transform="rotate(220)"/>
+                        <use href="#white-petal" transform="rotate(240)"/><use href="#white-petal" transform="rotate(260)"/>
+                        <use href="#white-petal" transform="rotate(280)"/><use href="#white-petal" transform="rotate(300)"/>
+                        <use href="#white-petal" transform="rotate(320)"/><use href="#white-petal" transform="rotate(340)"/>
+                    </g>
+                    <!-- Layer Tengah -->
+                    <g fill="#ffffff" stroke="#ede8e1" stroke-width="0.6" transform="scale(0.82) rotate(10)">
+                        <use href="#white-petal-curved" transform="rotate(0)"/><use href="#white-petal-curved" transform="rotate(24)"/>
+                        <use href="#white-petal-curved" transform="rotate(48)"/><use href="#white-petal-curved" transform="rotate(72)"/>
+                        <use href="#white-petal-curved" transform="rotate(96)"/><use href="#white-petal-curved" transform="rotate(120)"/>
+                        <use href="#white-petal-curved" transform="rotate(144)"/><use href="#white-petal-curved" transform="rotate(168)"/>
+                        <use href="#white-petal-curved" transform="rotate(192)"/><use href="#white-petal-curved" transform="rotate(216)"/>
+                        <use href="#white-petal-curved" transform="rotate(240)"/><use href="#white-petal-curved" transform="rotate(264)"/>
+                        <use href="#white-petal-curved" transform="rotate(288)"/><use href="#white-petal-curved" transform="rotate(312)"/>
+                        <use href="#white-petal-curved" transform="rotate(336)"/>
+                    </g>
+                    <!-- Layer Dalam -->
+                    <g fill="#ffffff" stroke="#e8e4cd" stroke-width="0.6" transform="scale(0.6) rotate(22)">
+                        <use href="#white-petal" transform="rotate(0)"/><use href="#white-petal" transform="rotate(30)"/>
+                        <use href="#white-petal" transform="rotate(60)"/><use href="#white-petal" transform="rotate(90)"/>
+                        <use href="#white-petal" transform="rotate(120)"/><use href="#white-petal" transform="rotate(150)"/>
+                        <use href="#white-petal" transform="rotate(180)"/><use href="#white-petal" transform="rotate(210)"/>
+                        <use href="#white-petal" transform="rotate(240)"/><use href="#white-petal" transform="rotate(270)"/>
+                        <use href="#white-petal" transform="rotate(300)"/><use href="#white-petal" transform="rotate(330)"/>
+                    </g>
+                    <!-- Inti Krem Kekuningan Lembut -->
+                    <g fill="#f7f9d9" stroke="#dce3a8" stroke-width="0.6" transform="scale(0.35) rotate(8)">
+                        <use href="#white-petal" transform="rotate(0)"/><use href="#white-petal" transform="rotate(45)"/>
+                        <use href="#white-petal" transform="rotate(90)"/><use href="#white-petal" transform="rotate(135)"/>
+                        <use href="#white-petal" transform="rotate(180)"/><use href="#white-petal" transform="rotate(225)"/>
+                        <use href="#white-petal" transform="rotate(270)"/><use href="#white-petal" transform="rotate(315)"/>
+                    </g>
+                    <circle cx="0" cy="0" r="6" fill="#e6ecb5"/>
+                </g>
+            </defs>
+
+            <!-- =================================================================
+                 LAYER 1: PLASTIK CELLOPHANE BELAKANG
+                 ================================================================= -->
+            <polygon points="15,130 220,25 405,155 235,485 170,485"
+                     fill="url(#cello-back)" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+
+            <!-- =================================================================
+                 LAYER 2: BATANG & DAUN HIJAU DI DALAM BUKET
+                 ================================================================= -->
+            <!-- Batang Bawah di dalam Kerucut Plastik -->
+            <g stroke="#3d5e2e" stroke-width="5.5" stroke-linecap="round" fill="none">
+                <path d="M 165,330 L 195,475"/>
+                <path d="M 185,320 L 202,480"/>
+                <path d="M 210,320 L 208,478"/>
+                <path d="M 240,320 L 214,475"/>
+                <path d="M 145,335 L 188,472"/>
+            </g>
+            <g stroke="#557a40" stroke-width="4" stroke-linecap="round" fill="none">
+                <path d="M 175,310 L 198,476"/>
+                <path d="M 225,310 L 210,476"/>
+            </g>
+
+            <!-- Daun-daun Hijau Gelap di sela-sela bunga -->
+            <g fill="#3f6130">
+                <path d="M 180,250 C 165,210 185,165 205,135 C 208,175 198,215 180,250 Z"/>
+                <path d="M 205,270 C 175,245 140,245 115,260 C 145,275 175,278 205,270 Z"/>
+                <path d="M 220,335 C 250,335 280,320 300,295 C 270,300 245,315 220,335 Z"/>
+                <path d="M 185,375 C 165,395 140,415 125,410 C 140,390 165,380 185,375 Z"/>
+                <path d="M 215,375 C 235,395 255,415 270,410 C 255,390 235,380 215,375 Z"/>
+            </g>
+
+            <!-- =================================================================
+                 LAYER 3: BUNGA 1 — KRISAN PINK-LILAC BESAR (KIRI ATAS, TAMPAK SAMPING-ATAS)
+                 ================================================================= -->
+            <g transform="translate(152, 162) rotate(-14)">
+                <g class="clickable-flower" onclick="showFlowerNote(0)">
+                    <!-- Kelopak Belakang Panjang Menjulang -->
+                    <g fill="url(#pink-mum-petal)" stroke="#ffccf2" stroke-width="0.5">
+                        <path d="M 0,15 C -55,-20 -75,-75 -55,-88 C -38,-92 -18,-45 0,15 Z"/>
+                        <path d="M 0,15 C -42,-30 -55,-88 -34,-96 C -16,-95 -8,-45 0,15 Z"/>
+                        <path d="M 0,15 C -24,-35 -28,-95 -8,-100 C 8,-96 6,-45 0,15 Z"/>
+                        <path d="M 0,15 C -5,-35 2,-96 20,-98 C 36,-92 22,-40 0,15 Z"/>
+                        <path d="M 0,15 C 15,-30 32,-88 48,-86 C 60,-78 38,-30 0,15 Z"/>
+                        <path d="M 0,15 C 28,-20 55,-70 68,-62 C 76,-50 45,-12 0,15 Z"/>
+                        <path d="M 0,15 C -68,-8 -88,-52 -72,-66 C -55,-74 -28,-32 0,15 Z"/>
+                    </g>
+                    <!-- Kelopak Tengah Lebih Terang -->
+                    <g fill="url(#pink-mum-inner)" stroke="#ffe5f9" stroke-width="0.6">
+                        <path d="M 0,18 C -48,-10 -62,-62 -44,-74 C -28,-78 -14,-35 0,18 Z"/>
+                        <path d="M 0,18 C -28,-22 -36,-76 -18,-82 C -2,-82 -2,-35 0,18 Z"/>
+                        <path d="M 0,18 C -8,-25 0,-80 16,-80 C 30,-76 16,-30 0,18 Z"/>
+                        <path d="M 0,18 C 12,-20 28,-72 42,-68 C 52,-60 30,-20 0,18 Z"/>
+                        <path d="M 0,18 C 25,-10 50,-50 58,-42 C 62,-30 35,-5 0,18 Z"/>
+                    </g>
+                    <!-- Kelopak Depan Melengkung -->
+                    <g fill="#ff99e5" opacity="0.92">
+                        <path d="M -8,20 C -35,0 -45,-42 -28,-52 C -15,-55 -6,-20 -2,20 Z"/>
+                        <path d="M 0,22 C -12,-8 -10,-52 6,-56 C 18,-52 12,-15 4,22 Z"/>
+                        <path d="M 8,20 C 18,-5 32,-42 42,-36 C 48,-28 28,2 8,20 Z"/>
+                    </g>
+                    <!-- Pangkal Kelopak Hijau-Ungu -->
+                    <ellipse cx="0" cy="20" rx="22" ry="10" fill="#5e3a58"/>
+                </g>
+            </g>
+
+            <!-- =================================================================
+                 LAYER 4: BUNGA 2 — TANGKAI TINGGI BUNGA ASTER/PEACOCK UNGU (ATAS KANAN/TENGAH)
+                 ================================================================= -->
+            <g class="clickable-flower" style="transform-origin: 235px 110px;" onclick="showFlowerNote(1)">
+                <!-- Batang Utama & Cabang Tinggi -->
+                <g stroke="#3e6130" stroke-width="4" fill="none" stroke-linecap="round">
+                    <path d="M 205,235 Q 225,135 268,18"/>
+                    <path d="M 218,180 Q 202,110 212,42"/>
+                    <path d="M 232,145 Q 268,95 296,42"/>
+                    <path d="M 212,205 Q 195,155 198,108"/>
+                    <path d="M 225,175 Q 250,155 262,135"/>
+                </g>
+                <!-- Daun Kecil Sepanjang Tangkai Aster -->
+                <g fill="#486e38">
+                    <path d="M 215,185 Q 192,155 182,175 Q 198,185 215,185 Z"/>
+                    <path d="M 228,150 Q 252,135 256,118 Q 238,128 228,150 Z"/>
+                    <path d="M 245,95 Q 232,72 242,58 Q 252,75 245,95 Z"/>
+                </g>
+                <!-- Kuntum-kuntum Bunga Aster Ungu sesuai foto -->
+                <use href="#aster-bloom" transform="translate(212, 34) scale(1.15)"/>
+                <use href="#aster-bloom" transform="translate(296, 44) scale(1.15)"/>
+                <use href="#aster-bloom" transform="translate(202, 82) scale(1.3)"/>
+                <use href="#aster-bloom" transform="translate(232, 102) scale(0.95)"/>
+                <use href="#aster-bloom" transform="translate(264, 134) scale(0.9)"/>
+                <use href="#aster-bloom" transform="translate(182, 152) scale(0.7)"/>
+                <use href="#aster-bloom" transform="translate(215, 202) scale(0.8)"/>
+            </g>
+
+            <!-- =================================================================
+                 LAYER 5: BUNGA 3 — KRISAN MAROON PINGGIRAN PUTIH (KANAN BAWAH)
+                 ================================================================= -->
+            <g transform="translate(268, 326) scale(0.98)">
+                <g class="clickable-flower" onclick="showFlowerNote(2)">
+                    <g>
+                        <use href="#maroon-petal" transform="rotate(0)"/><use href="#maroon-petal" transform="rotate(24)"/>
+                        <use href="#maroon-petal" transform="rotate(48)"/><use href="#maroon-petal" transform="rotate(72)"/>
+                        <use href="#maroon-petal" transform="rotate(96)"/><use href="#maroon-petal" transform="rotate(120)"/>
+                        <use href="#maroon-petal" transform="rotate(144)"/><use href="#maroon-petal" transform="rotate(168)"/>
+                        <use href="#maroon-petal" transform="rotate(192)"/><use href="#maroon-petal" transform="rotate(216)"/>
+                        <use href="#maroon-petal" transform="rotate(240)"/><use href="#maroon-petal" transform="rotate(264)"/>
+                        <use href="#maroon-petal" transform="rotate(288)"/><use href="#maroon-petal" transform="rotate(312)"/>
+                        <use href="#maroon-petal" transform="rotate(336)"/>
+                    </g>
+                    <g transform="scale(0.72) rotate(12)">
+                        <use href="#maroon-petal" transform="rotate(0)"/><use href="#maroon-petal" transform="rotate(30)"/>
+                        <use href="#maroon-petal" transform="rotate(60)"/><use href="#maroon-petal" transform="rotate(90)"/>
+                        <use href="#maroon-petal" transform="rotate(120)"/><use href="#maroon-petal" transform="rotate(150)"/>
+                        <use href="#maroon-petal" transform="rotate(180)"/><use href="#maroon-petal" transform="rotate(210)"/>
+                        <use href="#maroon-petal" transform="rotate(240)"/><use href="#maroon-petal" transform="rotate(270)"/>
+                        <use href="#maroon-petal" transform="rotate(300)"/><use href="#maroon-petal" transform="rotate(330)"/>
+                    </g>
+                    <g transform="scale(0.45) rotate(25)">
+                        <use href="#maroon-petal" transform="rotate(0)"/><use href="#maroon-petal" transform="rotate(45)"/>
+                        <use href="#maroon-petal" transform="rotate(90)"/><use href="#maroon-petal" transform="rotate(135)"/>
+                        <use href="#maroon-petal" transform="rotate(180)"/><use href="#maroon-petal" transform="rotate(225)"/>
+                        <use href="#maroon-petal" transform="rotate(270)"/><use href="#maroon-petal" transform="rotate(315)"/>
+                    </g>
+                    <circle cx="0" cy="0" r="7" fill="#3b0518" stroke="#ffffff" stroke-width="1"/>
+                </g>
+            </g>
+
+            <!-- =================================================================
+                 LAYER 6: BUNGA 4 — GERBERA PEACH-ORANYE BESAR (KANAN TENGAH)
+                 ================================================================= -->
+            <g transform="translate(268, 232) rotate(8) scale(1.38)">
+                <g class="clickable-flower" onclick="showFlowerNote(3)">
+                    <!-- Layer Kelopak Luar (Peach & Gold-Apricot) -->
+                    <g fill="url(#gerbera-peach)" stroke="#ff8c61" stroke-width="0.4">
+                        <use href="#gerbera-petal" transform="rotate(0)"/><use href="#gerbera-petal" transform="rotate(15)"/>
+                        <use href="#gerbera-petal" transform="rotate(30)"/><use href="#gerbera-petal" transform="rotate(45)"/>
+                        <use href="#gerbera-petal" transform="rotate(60)"/><use href="#gerbera-petal" transform="rotate(75)"/>
+                        <use href="#gerbera-petal" transform="rotate(90)"/><use href="#gerbera-petal" transform="rotate(105)"/>
+                        <use href="#gerbera-petal" transform="rotate(120)"/><use href="#gerbera-petal" transform="rotate(135)"/>
+                        <use href="#gerbera-petal" transform="rotate(150)"/><use href="#gerbera-petal" transform="rotate(165)"/>
+                        <use href="#gerbera-petal" transform="rotate(180)"/>
+                        <!-- Sisi kiri bawah sedikit kuning keemasan seperti di foto -->
+                        <use href="#gerbera-petal" fill="url(#gerbera-gold-tint)" transform="rotate(195)"/>
+                        <use href="#gerbera-petal" fill="url(#gerbera-gold-tint)" transform="rotate(210)"/>
+                        <use href="#gerbera-petal" fill="url(#gerbera-gold-tint)" transform="rotate(225)"/>
+                        <use href="#gerbera-petal" transform="rotate(240)"/><use href="#gerbera-petal" transform="rotate(255)"/>
+                        <use href="#gerbera-petal" transform="rotate(270)"/><use href="#gerbera-petal" transform="rotate(285)"/>
+                        <use href="#gerbera-petal" transform="rotate(300)"/><use href="#gerbera-petal" transform="rotate(315)"/>
+                        <use href="#gerbera-petal" transform="rotate(330)"/><use href="#gerbera-petal" transform="rotate(345)"/>
+                    </g>
+                    <!-- Layer Kelopak Tengah -->
+                    <g fill="#ffb894" stroke="#ff986e" stroke-width="0.4" transform="scale(0.8) rotate(7.5)">
+                        <use href="#gerbera-petal" transform="rotate(0)"/><use href="#gerbera-petal" transform="rotate(18)"/>
+                        <use href="#gerbera-petal" transform="rotate(36)"/><use href="#gerbera-petal" transform="rotate(54)"/>
+                        <use href="#gerbera-petal" transform="rotate(72)"/><use href="#gerbera-petal" transform="rotate(90)"/>
+                        <use href="#gerbera-petal" transform="rotate(108)"/><use href="#gerbera-petal" transform="rotate(126)"/>
+                        <use href="#gerbera-petal" transform="rotate(144)"/><use href="#gerbera-petal" transform="rotate(162)"/>
+                        <use href="#gerbera-petal" transform="rotate(180)"/><use href="#gerbera-petal" transform="rotate(198)"/>
+                        <use href="#gerbera-petal" transform="rotate(216)"/><use href="#gerbera-petal" transform="rotate(234)"/>
+                        <use href="#gerbera-petal" transform="rotate(252)"/><use href="#gerbera-petal" transform="rotate(270)"/>
+                        <use href="#gerbera-petal" transform="rotate(288)"/><use href="#gerbera-petal" transform="rotate(306)"/>
+                        <use href="#gerbera-petal" transform="rotate(324)"/><use href="#gerbera-petal" transform="rotate(342)"/>
+                    </g>
+                    <!-- Layer Kelopak Dalam Kecil -->
+                    <g fill="#ffccb0" transform="scale(0.55) rotate(4)">
+                        <use href="#gerbera-petal" transform="rotate(0)"/><use href="#gerbera-petal" transform="rotate(24)"/>
+                        <use href="#gerbera-petal" transform="rotate(48)"/><use href="#gerbera-petal" transform="rotate(72)"/>
+                        <use href="#gerbera-petal" transform="rotate(96)"/><use href="#gerbera-petal" transform="rotate(120)"/>
+                        <use href="#gerbera-petal" transform="rotate(144)"/><use href="#gerbera-petal" transform="rotate(168)"/>
+                        <use href="#gerbera-petal" transform="rotate(192)"/><use href="#gerbera-petal" transform="rotate(216)"/>
+                        <use href="#gerbera-petal" transform="rotate(240)"/><use href="#gerbera-petal" transform="rotate(264)"/>
+                        <use href="#gerbera-petal" transform="rotate(288)"/><use href="#gerbera-petal" transform="rotate(312)"/>
+                        <use href="#gerbera-petal" transform="rotate(336)"/>
+                    </g>
+                    <!-- Mata Tengah Gerbera (Cincin Kuning-Hijau + Inti Coklat Gelap) -->
+                    <circle cx="0" cy="0" r="15" fill="#c9be38"/>
+                    <circle cx="0" cy="0" r="13" fill="none" stroke="#fae55a" stroke-width="2.2" stroke-dasharray="1.5,2"/>
+                    <circle cx="0" cy="0" r="9.5" fill="#2e1d14"/>
+                    <circle cx="0" cy="0" r="6" fill="#1a0f0a"/>
+                </g>
+            </g>
+
+            <!-- =================================================================
+                 LAYER 7: RANGKAIAN 5 BUNGA KRISAN PUTIH FLUFFY (KIRI, TENGAH, BAWAH)
+                 ================================================================= -->
+            <!-- Putih 1: Besar di Kiri Tengah (Tepat di bawah Krisan Pink) -->
+            <g transform="translate(118, 232) scale(1.25)">
+                <g class="clickable-flower" onclick="showFlowerNote(4)">
+                    <use href="#fluffy-white-mum"/>
+                </g>
+            </g>
+
+            <!-- Putih 2: Kiri Agak Bawah -->
+            <g transform="translate(86, 292) rotate(-15) scale(0.95)">
+                <g class="clickable-flower" onclick="showFlowerNote(5)">
+                    <use href="#fluffy-white-mum"/>
+                </g>
+            </g>
+
+            <!-- Putih 3: Kiri Bawah -->
+            <g transform="translate(104, 345) rotate(12) scale(0.92)">
+                <g class="clickable-flower" onclick="showFlowerNote(5)">
+                    <use href="#fluffy-white-mum"/>
+                </g>
+            </g>
+
+            <!-- Putih 4: Tengah Utama -->
+            <g transform="translate(178, 315) rotate(5) scale(1.08)">
+                <g class="clickable-flower" onclick="showFlowerNote(6)">
+                    <use href="#fluffy-white-mum"/>
+                </g>
+            </g>
+
+            <!-- Putih 5: Bawah Tengah -->
+            <g transform="translate(152, 385) rotate(-8) scale(0.92)">
+                <g class="clickable-flower" onclick="showFlowerNote(7)">
+                    <use href="#fluffy-white-mum"/>
+                </g>
+            </g>
+
+            <!-- Putih 6 (Kecil di Paling Bawah Kanan Tengah seperti di foto) -->
+            <g transform="translate(194, 405) rotate(18) scale(0.66)">
+                <g class="clickable-flower" onclick="showFlowerNote(7)">
+                    <use href="#fluffy-white-mum"/>
+                </g>
+            </g>
+
+            <!-- =================================================================
+                 LAYER 8: PLASTIK CELLOPHANE BENING DEPAN (EFEK KILAP KACA)
+                 ================================================================= -->
+            <g pointer-events="none">
+                <!-- Lembaran Plastik Depan -->
+                <polygon points="28,225 392,235 236,486 168,486"
+                         fill="url(#cello-front)" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+
+                <!-- Motif Daun Putih Transparan di Plastik Kanan (Persis seperti di foto) -->
+                <g fill="rgba(255,255,255,0.42)" transform="translate(302, 312) rotate(-28)">
+                    <ellipse cx="0" cy="0" rx="5" ry="16"/>
+                    <ellipse cx="-10" cy="12" rx="4.5" ry="13" transform="rotate(-32 -10 12)"/>
+                    <ellipse cx="10" cy="12" rx="4.5" ry="13" transform="rotate(32 10 12)"/>
+                    <ellipse cx="-10" cy="28" rx="4.5" ry="12" transform="rotate(-32 -10 28)"/>
+                    <ellipse cx="10" cy="28" rx="4.5" ry="12" transform="rotate(32 10 28)"/>
+                    <line x1="0" y1="0" x2="0" y2="45" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                </g>
+
+                <!-- Garis-garis Lipatan & Pantulan Cahaya Plastik Bening -->
+                <line x1="45" y1="150" x2="178" y2="480" stroke="url(#cello-shine)" stroke-width="3"/>
+                <line x1="95" y1="240" x2="188" y2="480" stroke="url(#cello-shine)" stroke-width="1.8"/>
+                <line x1="365" y1="190" x2="226" y2="480" stroke="url(#cello-shine)" stroke-width="2.5"/>
+                <line x1="315" y1="265" x2="216" y2="480" stroke="url(#cello-shine)" stroke-width="1.5"/>
+
+                <!-- Pita Pengikat di Bagian Bawah Buket -->
+                <g transform="translate(202, 448)">
+                    <rect x="-34" y="-6" width="68" height="12" rx="6" fill="#f47fa3" stroke="#ffffff" stroke-width="1"/>
+                    <path d="M 0,0 C -28,-18 -42,6 -22,14 C -10,18 -3,6 0,2 Z" fill="#ff9ebb" stroke="#ffffff" stroke-width="1"/>
+                    <path d="M 0,0 C 28,-18 42,6 22,14 C 10,18 3,6 0,2 Z" fill="#ff9ebb" stroke="#ffffff" stroke-width="1"/>
+                    <circle cx="0" cy="0" r="6" fill="#d95b82"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Tombol Kembali -->
+    <button class="btn-kembali" onclick="window.location.href='menu.html'">
+        <span>←</span>
+        <span>Kembali ke Menu</span>
+    </button>
+
+    <script>
+        const flowerMessages = [
+            {
+                name: "🌸 Krisan Pink-Lilac — Manis & Anggun",
+                msg: '"Bunga pink besar ini cantik banget, tapi tetap kalah manis sama senyum kamu waktu kita jalan bareng 🩷"'
+            },
+            {
+                name: "💜 Bunga Peacock Ungu — Spesial di Hatiku",
+                msg: '"Selamat ulang tahun sayanggkuuu! Semoga semua hal indah selalu mengelilingi hari-hari kamu ✨"'
+            },
+            {
+                name: "🌺 Krisan Maroon Putih — Elegan & Unik",
+                msg: '"Terima kasih udah hadir di hidupku dan bikin semuanya terasa jauh lebih berarti 🤍"'
+            },
+            {
+                name: "🌼 Gerbera Peach-Orange — Kehangatan & Ceria",
+                msg: '"Warna bunga ini secerah dan sehangat tawa kamu. Jangan pernah berhenti senyum yaa cantikkuuu 🫶🏻"'
+            },
+            {
+                name: "🤍 Krisan Putih — Cinta yang Tulus",
+                msg: '"Bunga tercantik untuk orang yang paling cantik di dunia, anjay! Sayang kamu banyak-banyak 🤍"'
+            },
+            {
+                name: "🤍 White Mum — Kesabaran & Kasih Sayang",
+                msg: '"Semoga di umur yang baru ini kamu makin bahagia, sehat selalu, dan makin sayang sama aku 😝🩷"'
+            },
+            {
+                name: "🤍 Mekar Putih — Doa Terbaik Untukmu",
+                msg: '"Apa pun cita-cita dan harapan yang lagi kamu kejar sekarang, aku selalu dukung dan doain dari sini ✨"'
+            },
+            {
+                name: "💐 Buket Kita — Kenangan Manis",
+                msg: '"Happy Birthday Asy Syifa Qalbiyah! Semoga suka sama kejutan kecil ini yaa sayanggkuuu 🎂🩷"'
+            }
+        ];
+
+        function showFlowerNote(index) {
+            const card = document.getElementById('flower-note-card');
+            const nameEl = document.getElementById('flower-name');
+            const msgEl = document.getElementById('flower-msg');
+            const item = flowerMessages[index % flowerMessages.length];
+
+            card.classList.remove('pop');
+            void card.offsetWidth;
+            card.classList.add('pop');
+
+            nameEl.innerText = item.name;
+            msgEl.innerText = item.msg;
+        }
+
+        // Kelopak Bunga Jatuh
+        function startFallingPetals() {
+            const petals = ['🌸', '🤍', '🩷', '✨'];
+            setInterval(() => {
+                const petalDiv = document.createElement('div');
+                petalDiv.classList.add('falling-petal');
+                petalDiv.innerText = petals[Math.floor(Math.random() * petals.length)];
+                petalDiv.style.left = (Math.random() * 96 + 2) + 'vw';
+                petalDiv.style.fontSize = (14 + Math.random() * 12) + 'px';
+                petalDiv.style.animationDuration = (5 + Math.random() * 5) + 's';
+                document.body.appendChild(petalDiv);
+                setTimeout(() => petalDiv.remove(), 10000);
+            }, 650);
+        }
+
+        // Kontrol Musik Latar
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const icon = document.getElementById('music-icon');
+            const text = document.getElementById('music-text');
+            if (music.paused) {
+                music.volume = 0.5;
+                music.play().then(() => {
+                    icon.innerText = '🎶';
+                    text.innerText = 'Playing';
+                    sessionStorage.setItem('bday_music_playing', '1');
+                }).catch(() => {});
+            } else {
+                music.pause();
+                icon.innerText = '🎵';
+                text.innerText = 'Musik';
+                sessionStorage.setItem('bday_music_playing', '0');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            startFallingPetals();
+            try {
+                const visited = JSON.parse(localStorage.getItem('bday_visited_pages') || '[]');
+                if (!visited.includes('h1.html')) {
+                    visited.push('h1.html');
+                    localStorage.setItem('bday_visited_pages', JSON.stringify(visited));
+                }
+            } catch {}
+
+            const music = document.getElementById('bg-music');
+            if (sessionStorage.getItem('bday_music_playing') === '1') {
+                music.volume = 0.5;
+                music.play().then(() => {
+                    document.getElementById('music-icon').innerText = '🎶';
+                    document.getElementById('music-text').innerText = 'Playing';
+                }).catch(() => {});
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Letter 💌 | Happy Birthday Syifaaa 🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Pacifico&family=Plus+Jakarta+Sans:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-blush-1: #fff6f9;
+            --bg-blush-2: #ffe8f0;
+            --bg-blush-3: #ffd6e5;
+            --pink-soft: #ffc2d4;
+            --pink-pastel: #ff9ebb;
+            --pink-primary: #f47fa3;
+            --pink-deep: #d95b82;
+            --text-heading: #b84166;
+            --text-body: #6e3b4b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 18% 18%, #ffffff 0%, transparent 45%),
+                        radial-gradient(circle at 82% 80%, #ffcfe0 0%, transparent 50%),
+                        linear-gradient(140deg, var(--bg-blush-1) 0%, var(--bg-blush-2) 50%, var(--bg-blush-3) 100%);
+            background-attachment: fixed;
+            color: var(--text-body);
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 16px 105px;
+            position: relative;
+        }
+
+        /* Floating Music Toggle */
+        .music-toggle {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 950;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid var(--pink-soft);
+            color: var(--text-heading);
+            padding: 9px 15px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            box-shadow: 0 6px 18px rgba(244, 127, 163, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            transform: translateY(-2px);
+            background: #fff;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 580px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+            animation: fadeSlideUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ================= PAGE 2: ENVELOPE INTRO CARD ================= */
+        .envelope-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid #ffffff;
+            border-radius: 34px;
+            padding: 38px 28px 34px;
+            box-shadow: 0 20px 45px rgba(225, 115, 155, 0.22);
+            width: 100%;
+            max-width: 460px;
+            position: relative;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            background: #fff0f5;
+            border: 1px solid var(--pink-soft);
+            color: var(--pink-deep);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 15px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+            letter-spacing: 0.4px;
+        }
+
+        .gif-frame {
+            background: linear-gradient(145deg, #fff9fb, #ffeef4);
+            border: 2px dashed var(--pink-soft);
+            border-radius: 24px;
+            padding: 16px;
+            margin: 0 auto 18px;
+            max-width: 260px;
+            box-shadow: inset 0 0 18px rgba(255, 182, 203, 0.25);
+        }
+
+        .gif-frame img {
+            width: 100%;
+            max-height: 190px;
+            object-fit: contain;
+            border-radius: 14px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .recipient-tag {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.55rem;
+            color: var(--text-heading);
+            margin-bottom: 6px;
+        }
+
+        .knock-text {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--text-body);
+            margin-bottom: 22px;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #ff9ebb 0%, #f47fa3 55%, #e8668e 100%);
+            color: #fff;
+            border: 2px solid #ffffff;
+            border-radius: 999px;
+            padding: 14px 36px;
+            font-size: 1.1rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(244, 127, 163, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .button:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 12px 28px rgba(232, 102, 142, 0.5);
+        }
+
+        /* ================= PAGE 3: STATIONERY LOVE LETTER ================= */
+        .stationery-wrapper {
+            background: #fffcfd;
+            border: 2px solid #ffffff;
+            border-radius: 30px;
+            padding: 36px 28px 28px;
+            width: 100%;
+            box-shadow: 0 22px 50px rgba(217, 91, 130, 0.22), 0 0 0 6px rgba(255, 255, 255, 0.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Pita Atas Surat */
+        .stationery-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ffc2d4,
+                #ffc2d4 12px,
+                #ffe8f0 12px,
+                #ffe8f0 24px
+            );
+        }
+
+        .wax-seal {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #ff9ebb, #d95b82);
+            border: 2px dashed rgba(255, 255, 255, 0.8);
+            box-shadow: 0 6px 15px rgba(217, 91, 130, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 4px auto 12px;
+        }
+
+        .letter-header {
+            font-size: clamp(1.85rem, 5vw, 2.35rem);
+            margin-bottom: 14px;
+            font-family: 'Dancing Script', cursive;
+            color: var(--text-heading);
+        }
+
+        .letter-paper-lines {
+            background-color: #fff8fa;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 31px,
+                rgba(255, 182, 203, 0.38) 31px,
+                rgba(255, 182, 203, 0.38) 32px
+            );
+            border: 1.5px solid #ffd9e6;
+            border-radius: 20px;
+            padding: 22px 22px 26px;
+            text-align: left;
+            box-shadow: inset 0 2px 10px rgba(244, 127, 163, 0.08);
+        }
+
+        .letter {
+            white-space: pre-line;
+            font-size: 1.32rem;
+            line-height: 32px;
+            color: var(--text-body);
+            min-height: 260px;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+        }
+
+        .cursor-heart {
+            display: inline-block;
+            font-size: 1rem;
+            animation: blinkHeart 0.8s infinite alternate;
+        }
+
+        @keyframes blinkHeart {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0.25; transform: scale(0.8); }
+        }
+
+        .letter-footer-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .mini-btn {
+            background: #fff0f5;
+            border: 1.5px solid var(--pink-soft);
+            color: var(--text-heading);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mini-btn:hover {
+            background: #ffe0eb;
+            transform: translateY(-2px);
+        }
+
+        .mini-btn.primary {
+            background: linear-gradient(135deg, #ff9ebb, #f47fa3);
+            color: white;
+            border-color: white;
+            box-shadow: 0 4px 12px rgba(244, 127, 163, 0.3);
+        }
+
+        /* Simbol Jatuh */
+        .falling {
+            position: fixed;
+            top: -30px;
+            font-size: 20px;
+            animation: fall linear infinite;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ================= BUTTON KEMBALI ================= */
+        .btn-kembali {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            color: var(--text-heading);
+            border: 2px solid var(--pink-soft);
+            padding: 12px 28px;
+            font-size: 0.98rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(217, 91, 130, 0.22);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-kembali:hover {
+            background: linear-gradient(135deg, #ff9ebb 0%, #f47fa3 100%);
+            color: white;
+            border-color: white;
+            transform: translateX(-50%) translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 28px rgba(244, 127, 163, 0.4);
+        }
+
+        @media (max-width: 520px) {
+            .stationery-wrapper {
+                padding: 28px 18px 22px;
+            }
+            .letter-paper-lines {
+                padding: 16px 16px 20px;
+            }
+            .letter {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol Musik -->
+    <button id="music-btn" class="music-toggle" onclick="toggleLetterMusic()">
+        <span id="music-icon">🎵</span>
+        <span id="music-text">Musik</span>
+    </button>
+
+    <!-- STEP 1: AMPLOP SURAT -->
+    <div class="page active" id="page2">
+        <div class="envelope-card">
+            <span class="badge-pill">💌 Birthday Letter 💌</span>
+            <div class="gif-frame">
+                <img src="write.gif" alt="Cute Envelope" />
+            </div>
+            <div class="recipient-tag">For: Asy Syifa Qalbiyah 🤍</div>
+            <p class="knock-text">knock knock .. open me up! ( ∩´͈ ᐜ `͈∩)</p>
+            <button class="button" onclick="goToPage(3)">
+                <span>Buka Suratnya ‹𝟹</span>
+                <span>🩷</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- STEP 2: ISI SURAT CINTA -->
+    <div class="page" id="page3">
+        <div class="stationery-wrapper">
+            <div class="wax-seal">🩷</div>
+            <h2 class="letter-header">to Asy Syifa Qalbiyah &lt;3 .ᐟ</h2>
+
+            <div class="letter-paper-lines">
+                <div class="letter" id="letterText"></div>
+            </div>
+
+            <div class="letter-footer-actions">
+                <button class="mini-btn" onclick="finishTypingNow()">✨ Tampilkan Semua</button>
+                <button class="mini-btn" onclick="replayTyping()">🔄 Ketik Ulang</button>
+                <button class="mini-btn primary" onclick="sendLoveBurst()">💐 Bunga Virtual</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" src="Party.mp3" loop></audio>
+
+    <button class="btn-kembali" onclick="window.location.href='menu.html'">
+        <span>←</span>
+        <span>Kembali ke Menu</span>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const fullLetter = `happy birthday to you ! 🩷
+
+ciee ulang tahun ya hari iniii
+Happy Birthday Yaaaaa sayangggkuu
+
+wishing you a day wrapped in joy, gentle laughter, and tender moments that make your heart flutter.
+Semoga kamu ga marah" mulu ya 🙄
+
+Gift's coming later! 
+
+enjoy your birthday sayanggg!!
+
+with all my love,
+ ur bf `;
+
+        let typingTimer = null;
+        let fallingStarted = false;
+
+        // Tandai halaman sudah dibuka
+        window.addEventListener('DOMContentLoaded', () => {
+            try {
+                const visited = JSON.parse(localStorage.getItem('bday_visited_pages') || '[]');
+                if (!visited.includes('h3.html')) {
+                    visited.push('h3.html');
+                    localStorage.setItem('bday_visited_pages', JSON.stringify(visited));
+                }
+            } catch {}
+        });
+
+        function goToPage(pageNum) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+
+            const next = document.getElementById(`page${pageNum}`);
+            if (next) {
+                next.classList.add('active');
+            }
+
+            if (pageNum === 3) {
+                const music = document.getElementById("bg-music");
+                music.volume = 0.55;
+                music.play().then(() => {
+                    document.getElementById('music-icon').innerText = '🎶';
+                    document.getElementById('music-text').innerText = 'Playing';
+                }).catch(e => console.log("Autoplay blocked:", e));
+
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 120,
+                        spread: 90,
+                        origin: { y: 0.6 },
+                        colors: ['#ff85a9', '#ffb3c6', '#ffd6e5', '#ffffff', '#f47fa3']
+                    });
+                }
+
+                typeText(fullLetter, document.getElementById('letterText'), 28);
+                if (!fallingStarted) {
+                    startFallingSymbols();
+                    fallingStarted = true;
+                }
+            }
+        }
+
+        function typeText(text, element, speed) {
+            if (typingTimer) clearTimeout(typingTimer);
+            element.innerHTML = '';
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    element.textContent = text.slice(0, i + 1);
+                    const cursor = document.createElement('span');
+                    cursor.className = 'cursor-heart';
+                    cursor.innerText = ' 🩷';
+                    element.appendChild(cursor);
+                    i++;
+                    typingTimer = setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        function finishTypingNow() {
+            if (typingTimer) clearTimeout(typingTimer);
+            const element = document.getElementById('letterText');
+            element.textContent = fullLetter;
+        }
+
+        function replayTyping() {
+            typeText(fullLetter, document.getElementById('letterText'), 28);
+        }
+
+        function sendLoveBurst() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 90,
+                    spread: 110,
+                    origin: { y: 0.7 },
+                    colors: ['#ff85a9', '#ffb3c6', '#f47fa3', '#fff0f5', '#d8b4fe']
+                });
+            }
+
+            const flowers = ['💐', '🌸', '🌷', '🌺', '🌼', '🤍'];
+            for (let i = 0; i < 18; i++) {
+                setTimeout(() => {
+                    const el = document.createElement('div');
+                    el.classList.add('falling');
+                    el.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+                    el.style.left = (Math.random() * 92 + 4) + 'vw';
+                    el.style.fontSize = (22 + Math.random() * 14) + 'px';
+                    el.style.animationDuration = (2.8 + Math.random() * 2) + 's';
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 5000);
+                }, i * 60);
+            }
+        }
+
+        function toggleLetterMusic() {
+            const music = document.getElementById("bg-music");
+            const icon = document.getElementById('music-icon');
+            const text = document.getElementById('music-text');
+            if (music.paused) {
+                music.volume = 0.55;
+                music.play().then(() => {
+                    icon.innerText = '🎶';
+                    text.innerText = 'Playing';
+                }).catch(() => {});
+            } else {
+                music.pause();
+                icon.innerText = '🎵';
+                text.innerText = 'Musik';
+            }
+        }
+
+        function startFallingSymbols() {
+            const symbols = ['🩷', '🌸', '🤍', '✨', '🎀'];
+            setInterval(() => {
+                const el = document.createElement('div');
+                el.classList.add('falling');
+                el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                el.style.left = (Math.random() * 96 + 2) + 'vw';
+                el.style.animationDuration = (3.5 + Math.random() * 3) + 's';
+
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 6500);
+            }, 400);
+        }
+    </script>
+</body>
+</html>

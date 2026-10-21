@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sayanggkuuu 🤍🫶🏻</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Container Animasi Hati & Kelopak Sakura -->
+    <div id="hearts-container"></div>
+
+    <!-- Tombol Musik Mengambang -->
+    <button id="music-btn" class="music-toggle" onclick="toggleBgMusic()">
+        <span class="disc">💿</span>
+        <span id="music-label">Putar Musik 🎵</span>
+    </button>
+
+    <audio id="bg-music" loop>
+        <source src="Party.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- HALAMAN 2: MENU UTAMA -->
+    <div id="page-2" class="container fade-in">
+        <div class="menu-header-card">
+            <div class="ribbon-badge">🎂 For Asy Syifa Qalbiyah 🤍</div>
+            <h2 class="menu-title">Happy Birthday Sayanggkuuu 🤍</h2>
+            <p class="menu-subtitle">Pilih mau buka yang mana dulu yaa sayanggku 🤍:</p>
+            <div class="progress-pill">
+                <span>🎀 Kejutan dibuka:</span>
+                <span id="opened-count">0 / 4</span>
+            </div>
+        </div>
+
+        <!-- TIMER PACARAN REAL-TIME -->
+        <div class="love-timer-card">
+            <div class="timer-header">
+                <span class="timer-badge">⏳ Since 26 Februari 2026 🩷</span>
+                <h3 class="timer-title">Kita Sudah Bersama Selama</h3>
+            </div>
+            <div class="timer-grid">
+                <div class="timer-box">
+                    <span class="timer-num" id="timer-days">0</span>
+                    <span class="timer-label">Hari</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-num" id="timer-hours">00</span>
+                    <span class="timer-label">Jam</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-num" id="timer-minutes">00</span>
+                    <span class="timer-label">Menit</span>
+                </div>
+                <div class="timer-box sec-box">
+                    <span class="timer-num" id="timer-seconds">00</span>
+                    <span class="timer-label">Detik</span>
+                </div>
+            </div>
+            <p class="timer-footer">
+                Dan akan terus bertambah setiap detiknya bersamamu, Sayanggkuuu 🤍♾️
+            </p>
+        </div>
+
+        <div class="card-grid">
+            <!-- Card 1: Bouquet -->
+            <div class="card" id="card-h1" onclick="showCardModal('Bouquet Bunga 💐', 'Bunga tercantik untuk orang yang paling cantik di dunia, anjay', 'h1.html', '💐')">
+                <span class="card-badge">Gift #01</span>
+                <span class="card-opened-check" title="Sudah dibuka">✓</span>
+                <div class="card-icon-wrap">
+                    <span class="card-icon">💐</span>
+                </div>
+                <span class="card-title">Bouquet</span>
+                <span class="card-sub">Bunga cantik khusus buat kamu 🌸</span>
+            </div>
+
+            <!-- Card 2: Cake -->
+            <div class="card" id="card-h2" onclick="showCardModal('Birthday Cake 🎂', 'Make a wish! Jangan lupa tiup lilinnya ya sayangg', 'h2.html', '🎂')">
+                <span class="card-badge">Gift #02</span>
+                <span class="card-opened-check" title="Sudah dibuka">✓</span>
+                <div class="card-icon-wrap">
+                    <span class="card-icon">🎂</span>
+                </div>
+                <span class="card-title">Cake</span>
+                <span class="card-sub">Tiup lilin & make a wish ✨</span>
+            </div>
+
+            <!-- Card 3: Message -->
+            <div class="card" id="card-h3" onclick="showCardModal('Secret Message 💌', 'Ada pesan kecil dari aku buat kamu', 'h3.html', '💌')">
+                <span class="card-badge">Gift #03</span>
+                <span class="card-opened-check" title="Sudah dibuka">✓</span>
+                <div class="card-icon-wrap">
+                    <span class="card-icon">💌</span>
+                </div>
+                <span class="card-title">Message</span>
+                <span class="card-sub">🩷</span>
+            </div>
+
+            <!-- Card 4: Memory -->
+            <div class="card" id="card-h4" onclick="showCardModal('Sweet Memory 📸', 'Momen-momen lucu dan manis kita berdua, anjay lucu dan manis HAHAHAHA', 'h4.html', '📸')">
+                <span class="card-badge">Gift #04</span>
+                <span class="card-opened-check" title="Sudah dibuka">✓</span>
+                <div class="card-icon-wrap">
+                    <span class="card-icon">📸</span>
+                </div>
+                <span class="card-title">Memory</span>
+                <span class="card-sub">Scrapbook momen manis kita 🤍</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 26px;">
+            <a href="index.html" class="btn btn-secondary" style="padding: 10px 22px; font-size: 0.9rem;">
+                🔒 Kembali ke Layar Kunci
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal Card (Konfirmasi Buka Halaman Detail) -->
+    <div id="modal-card" class="modal-overlay hidden">
+        <div class="modal-box">
+            <button class="modal-close-x" onclick="closeModal('modal-card')" aria-label="Tutup">✕</button>
+            <div class="modal-preview-icon" id="modal-card-icon">🎁</div>
+            <h2 id="modal-card-title" style="font-size: 1.85rem; margin-bottom: 10px;">Title</h2>
+            <p id="modal-card-desc" style="font-size: 1rem; line-height: 1.6; color: var(--text-body); font-weight: 600;">Description</p>
+            <div class="modal-actions">
+                <button class="btn" id="modal-card-btn">Buka Halaman ✨</button>
+                <button class="btn btn-secondary" onclick="closeModal('modal-card')">Nanti Dulu 🤍</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
